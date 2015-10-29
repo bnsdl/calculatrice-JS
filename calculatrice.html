@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+
+    #calculatrice {
+      width: 120px;
+      border: 1px solid black;
+    }
+
+    button {
+      display:inline-block;
+      margin: 5px 5px;
+      padding: 3px 3px;
+    }
+
+    #ce {
+      width: 100px;
+      margin: 0 10px;
+    }
+
+    #egal {
+      width:50px;
+    }
+
+    #resultat {
+      border-top: 1px solid black;
+      height: 30px;
+      background: lightgrey;
+      text-align: center;
+      line-height: 30px;
+    }
+
+    </style>
+  </head>
+  <body>
+    <div id="calculatrice">
+      <button onclick="reset()" id="ce">CE</button>
+      <button onclick="affiche(1)">1</button>
+      <button onclick="affiche(2)">2</button>
+      <button onclick="affiche(3)">3</button>
+      <button onclick="addition()">+</button>
+      <button onclick="affiche(4)">4</button>
+      <button onclick="affiche(5)">5</button>
+      <button onclick="affiche(6)">6</button>
+      <button onclick="soustraction()">-</button>
+      <button onclick="affiche(7)">7</button>
+      <button onclick="affiche(8)">8</button>
+      <button onclick="affiche(9)">9</button>
+      <button onclick="multiplication()">*</button>
+      <button onclick="affiche(0)">0</button>
+      <button onclick="resultat()" id="egal">=</button>
+      <button onclick="division()">/</button>
+      <div id="resultat"></div>
+
+    </div>
+  </body>
+  <script type="text/javascript">
+
+var entreeUne = [];
+var entreeDeux = [];
+var operateur = [];
+
+function affiche(i) {
+        document.getElementById("resultat").textContent = document.getElementById("resultat").textContent + i;
+}
+
+
+// function calcul(j) {
+//   operateur.push("j");
+//   entreeUne.push(document.getElementById("resultat").textContent);
+//   console.log("premier nombre: " + entreeUne);
+//   console.log("operateur: " + operateur);
+//   document.getElementById("resultat").textContent = null ;
+// }
+
+function addition() {
+    operateur.push("+");
+    entreeUne.push(document.getElementById("resultat").textContent);
+    console.log("premier nombre: " + entreeUne);
+    console.log("operateur: " + operateur);
+    document.getElementById("resultat").textContent = null ;
+}
+
+function soustraction() {
+    operateur.push("-");
+    entreeUne.push(document.getElementById("resultat").textContent);
+    console.log("premier nombre: " + entreeUne);
+    console.log("operateur: " + operateur);
+    document.getElementById("resultat").textContent = null ;
+}
+
+function multiplication() {
+    operateur.push("*");
+    entreeUne.push(document.getElementById("resultat").textContent);
+    console.log("premier nombre: " + entreeUne);
+    console.log("operateur: " + operateur);
+    document.getElementById("resultat").textContent = null ;
+}
+
+function division() {
+    operateur.push("/");
+    entreeUne.push(document.getElementById("resultat").textContent);
+    console.log("premier nombre: " + entreeUne);
+    console.log("operateur: " + operateur);
+    document.getElementById("resultat").textContent = null ;
+}
+
+function resultat() {
+    entreeDeux.push(document.getElementById("resultat").textContent);
+    console.log("deuxième nombre: " + entreeDeux);
+    if (operateur == '+') {
+      document.getElementById("resultat").textContent = (Number(entreeUne) + Number(entreeDeux));
+    }
+    else if (operateur == '-'){
+      document.getElementById("resultat").textContent = (Number(entreeUne) - Number(entreeDeux));
+    }
+    else if (operateur == '*'){
+      document.getElementById("resultat").textContent = (Number(entreeUne) * Number(entreeDeux));
+    }
+    else {
+      document.getElementById("resultat").textContent = (Number(entreeUne) / Number(entreeDeux));
+    }
+}
+
+function reset() {
+  entreeUne = [];
+  console.log(entreeUne);
+  entreeDeux = [];
+  console.log(entreeDeux);
+  operateur = [];
+  console.log(operateur);
+  document.getElementById("resultat").textContent = null;
+}
+
+  </script>
+</html>
