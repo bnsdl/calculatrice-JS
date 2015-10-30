@@ -24,6 +24,14 @@
     #egal {
       width:50px;
     }
+    #enCours {
+      border-top: 1px solid black;
+      border-bottom: 1px solid black;
+      height: 30px;
+      background: lightgrey;
+      text-align: center;
+      line-height: 30px;
+    }
 
     #resultat {
       border-top: 1px solid black;
@@ -53,7 +61,8 @@
       <button onclick="affiche(0)">0</button>
       <button onclick="resultat()" id="egal">=</button>
       <button onclick="division()">/</button>
-      <div id="resultat"></div>
+      <span>En cours</span><div id="enCours"></div>
+      <span>Résultat</span><div id="resultat"></div>
 
     </div>
   </body>
@@ -64,74 +73,163 @@ var entreeDeux = [];
 var operateur = [];
 
 function affiche(i) {
-        document.getElementById("resultat").textContent = document.getElementById("resultat").textContent + i;
+      document.getElementById("enCours").textContent = document.getElementById("enCours").textContent + i;
 }
 
-
-// function calcul(j) {
-//   operateur.push("j");
-//   entreeUne.push(document.getElementById("resultat").textContent);
-//   console.log("premier nombre: " + entreeUne);
-//   console.log("operateur: " + operateur);
-//   document.getElementById("resultat").textContent = null ;
-// }
-
 function addition() {
+  if (entreeUne.length === 0){
     operateur.push("+");
+    entreeUne.push(document.getElementById("enCours").textContent);
+    // console.log("premier nombre: " + entreeUne);
+    // console.log("operateur: " + operateur);
+    document.getElementById("enCours").textContent = null ;
+  }
+  else {
+    // console.log("j'suis dans le else");
+    // console.log("operateur début else: " + operateur);
+    operateur = [];
+    operateur.push("+");
+    resultat();
+    // console.log(entreeUne);
+    // console.log(entreeDeux);
+    entreeUne = [];
     entreeUne.push(document.getElementById("resultat").textContent);
-    console.log("premier nombre: " + entreeUne);
-    console.log("operateur: " + operateur);
-    document.getElementById("resultat").textContent = null ;
+    // console.log("entreeUne fin de else: " + entreeUne);
+    // console.log("entreeDeux fin de else: " + entreeDeux);
+    // console.log("operateur fin de else: " + operateur);
+    document.getElementById("resultat").textContent = entreeUne ;
+  }
 }
 
 function soustraction() {
+  if (entreeUne.length === 0){
     operateur.push("-");
+    entreeUne.push(document.getElementById("enCours").textContent);
+    // console.log("premier nombre: " + entreeUne);
+    // console.log("operateur: " + operateur);
+    document.getElementById("enCours").textContent = null ;
+  }
+  else {
+    // console.log("j'suis dans le else soustraction");
+    // console.log("operateur début else: " + operateur);
+    operateur = [];
+    operateur.push("-");
+    resultat();
+    // console.log(entreeUne);
+    // console.log(entreeDeux);
+    entreeUne = [];
     entreeUne.push(document.getElementById("resultat").textContent);
-    console.log("premier nombre: " + entreeUne);
-    console.log("operateur: " + operateur);
-    document.getElementById("resultat").textContent = null ;
+    // console.log("entreeUne fin de else: " + entreeUne);
+    // console.log("entreeDeux fin de else: " + entreeDeux);
+    // console.log("operateur fin de else: " + operateur);
+    document.getElementById("resultat").textContent = entreeUne ;
+  }
 }
 
 function multiplication() {
+  if (entreeUne.length === 0){
     operateur.push("*");
+    entreeUne.push(document.getElementById("enCours").textContent);
+    // console.log("premier nombre: " + entreeUne);
+    // console.log("operateur: " + operateur);
+    document.getElementById("enCours").textContent = null ;
+  }
+  else if (document.getElementById("enCours").textContent === "") {
+    operateur = [];
+    operateur.push("*");
+    // console.log(entreeUne, operateur, entreeDeux);
+  }
+  else {
+    // console.log("j'suis dans le else multiplication");
+    // console.log("operateur début else: " + operateur);
+    operateur = [];
+    operateur.push("*");
+    resultat();
+    // console.log(entreeUne);
+    // console.log(entreeDeux);
+    entreeUne = [];
     entreeUne.push(document.getElementById("resultat").textContent);
-    console.log("premier nombre: " + entreeUne);
-    console.log("operateur: " + operateur);
-    document.getElementById("resultat").textContent = null ;
+    // console.log("entreeUne fin de else: " + entreeUne);
+    // console.log("entreeDeux fin de else: " + entreeDeux);
+    // console.log("operateur fin de else: " + operateur);
+    document.getElementById("resultat").textContent = entreeUne ;
+  }
 }
 
 function division() {
+  if (entreeUne.length === 0){
     operateur.push("/");
+    entreeUne.push(document.getElementById("enCours").textContent);
+    // console.log("premier nombre: " + entreeUne);
+    // console.log("operateur: " + operateur);
+    document.getElementById("enCours").textContent = null ;
+  }
+  else if (document.getElementById("enCours").textContent === "") {
+    operateur = [];
+    operateur.push("/");
+    // console.log(entreeUne, operateur, entreeDeux);
+  }
+  else {
+    // console.log("j'suis dans le else division");
+    // console.log("operateur début else: " + operateur);
+    operateur = [];
+    operateur.push("/");
+    resultat();
+    // console.log(entreeUne);
+    // console.log(entreeDeux);
+    entreeUne = [];
     entreeUne.push(document.getElementById("resultat").textContent);
-    console.log("premier nombre: " + entreeUne);
-    console.log("operateur: " + operateur);
-    document.getElementById("resultat").textContent = null ;
+    // console.log("entreeUne fin de else: " + entreeUne);
+    // console.log("entreeDeux fin de else: " + entreeDeux);
+    // console.log("operateur fin de else: " + operateur);
+    document.getElementById("resultat").textContent = entreeUne ;
+  }
 }
 
 function resultat() {
-    entreeDeux.push(document.getElementById("resultat").textContent);
-    console.log("deuxième nombre: " + entreeDeux);
+    entreeDeux.push(document.getElementById("enCours").textContent);
+    document.getElementById("enCours").textContent = null;
+    // console.log("deuxième nombre: " + entreeDeux);
     if (operateur == '+') {
       document.getElementById("resultat").textContent = (Number(entreeUne) + Number(entreeDeux));
+      // console.log("Le résultat est: " + (Number(entreeUne) + Number(entreeDeux)));
+      entreeUne = [];
+      entreeDeux = [];
+      entreeUne.push(document.getElementById("resultat").textContent);
     }
     else if (operateur == '-'){
       document.getElementById("resultat").textContent = (Number(entreeUne) - Number(entreeDeux));
+      entreeUne = [];
+      entreeDeux = [];
+      entreeUne.push(document.getElementById("resultat").textContent);
     }
     else if (operateur == '*'){
+      // console.log("else " + entreeUne, entreeDeux);
       document.getElementById("resultat").textContent = (Number(entreeUne) * Number(entreeDeux));
+      // console.log(document.getElementById("resultat").textContent);
+      entreeUne = [];
+      entreeDeux = [];
+      entreeUne.push(document.getElementById("resultat").textContent);
     }
     else {
+      if (entreeDeux === 0){
+        entreeDeux = 1;
+      }
       document.getElementById("resultat").textContent = (Number(entreeUne) / Number(entreeDeux));
+      entreeUne = [];
+      entreeDeux = [];
+      entreeUne.push(document.getElementById("resultat").textContent);
     }
 }
 
 function reset() {
   entreeUne = [];
-  console.log(entreeUne);
+  // console.log(entreeUne);
   entreeDeux = [];
-  console.log(entreeDeux);
+  // console.log(entreeDeux);
   operateur = [];
-  console.log(operateur);
+  // console.log(operateur);
+  document.getElementById("enCours").textContent = null;
   document.getElementById("resultat").textContent = null;
 }
 
