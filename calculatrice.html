@@ -6,46 +6,57 @@
     <style>
 
     #calculatrice {
-      width: 120px;
+      width: 200px;
       border: 1px solid black;
+      border-radius: 5px;
+      margin: 5px auto;
+    }
+
+    .ce {
+      width: 80px;
+      margin-left: 8px;
     }
 
     button {
-      display:inline-block;
-      margin: 5px 5px;
-      padding: 3px 3px;
+      margin: 10px 10px;
+      padding: 8px 8px;
+      border-radius: 5px;
     }
 
-    #ce {
-      width: 100px;
-      margin: 0 10px;
+    span {
+      margin-left: 5px;
     }
 
     #egal {
-      width:50px;
-    }
-    #enCours {
-      border-top: 1px solid black;
-      border-bottom: 1px solid black;
-      height: 30px;
-      background: lightgrey;
-      text-align: center;
-      line-height: 30px;
+      width:80px;
     }
 
-    #resultat {
+    #enCours, #resultat{
       border-top: 1px solid black;
       height: 30px;
       background: lightgrey;
-      text-align: center;
+      text-align: right;
       line-height: 30px;
+      padding-right: 5px;
+      font-size: 1.7em;
+    }
+
+    #enCours {
+      border-bottom: 1px solid black;
+    }
+
+    #infos {
+      position: absolute;
+      top: 50px;
+      left: 50px;
     }
 
     </style>
   </head>
   <body>
     <div id="calculatrice">
-      <button onclick="reset()" id="ce">CE</button>
+      <button onclick="reset()" class="ce">CE</button>
+      <button onclick="annuler()" class="ce">AC</button>
       <button onclick="affiche(1)">1</button>
       <button onclick="affiche(2)">2</button>
       <button onclick="affiche(3)">3</button>
@@ -61,8 +72,13 @@
       <button onclick="affiche(0)">0</button>
       <button onclick="resultat()" id="egal">=</button>
       <button onclick="division()">/</button>
-      <span>En cours</span><div id="enCours"></div>
-      <span>Résultat</span><div id="resultat"></div>
+      <span>En cours:</span><div id="enCours"></div>
+      <span>Résultat:</span><div id="resultat"></div>
+      <div id="infos">
+        <ul>
+          <li>Le bouton CE remet la calculatrice à 0</li>
+          <li>Le bouton AC annule l'entrée en cours</li>
+      </div>
 
     </div>
   </body>
@@ -212,9 +228,6 @@ function resultat() {
       entreeUne.push(document.getElementById("resultat").textContent);
     }
     else {
-      if (entreeDeux === 0){
-        entreeDeux = 1;
-      }
       document.getElementById("resultat").textContent = (Number(entreeUne) / Number(entreeDeux));
       entreeUne = [];
       entreeDeux = [];
@@ -231,6 +244,10 @@ function reset() {
   // console.log(operateur);
   document.getElementById("enCours").textContent = null;
   document.getElementById("resultat").textContent = null;
+}
+
+function annuler() {
+  document.getElementById("enCours").textContent = null;
 }
 
   </script>
